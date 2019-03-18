@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="ybP-Xu-Orr">
-                                <rect key="frame" x="16" y="164" width="382" height="162"/>
+                                <rect key="frame" x="16" y="164" width="382" height="203"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Lu-7y-7Hz" userLabel="Email">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -52,10 +52,16 @@
                                             <constraint firstAttribute="height" constant="40" id="svc-Ef-siL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <state key="normal" title="LOGIN">
+                                        <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0d-cY-vTP"/>
+                                        </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="n2x-Gg-g1r">
+                                        <rect key="frame" x="0.0" y="183" width="382" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="SSb-TO-4UD">
@@ -66,7 +72,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lgg-cZ-iDX">
-                                <rect key="frame" x="112" y="334" width="190.5" height="29"/>
+                                <rect key="frame" x="112" y="375" width="190.5" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account? " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdY-7T-kSI">
                                         <rect key="frame" x="0.0" y="0.0" width="135.5" height="29"/>
@@ -96,9 +102,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="n2x-Gg-g1r" id="o5F-i3-fw8"/>
                         <outlet property="emailTextField" destination="7Lu-7y-7Hz" id="K0h-2T-eri"/>
                         <outlet property="loginButton" destination="U3g-cT-3xi" id="rfY-xM-7dy"/>
                         <outlet property="passwordTextField" destination="YcO-5L-vGn" id="5te-cq-fGb"/>
+                        <outlet property="signUpButton" destination="f5A-Ps-es0" id="59B-Oc-1aJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

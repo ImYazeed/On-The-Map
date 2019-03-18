@@ -14,6 +14,8 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,12 @@ class loginViewController: UIViewController,UITextFieldDelegate {
 
     }
     
+    //MARK: ACTIONS
+    
+    @IBAction func loginTapped(_ sender: Any) {
+       setLoggingIn(true)
+    }
+    
     // MARK: LOGIN BUTTON HANDLING
 
     @IBAction func textFieldDidChange(_ sender: Any) {
@@ -36,6 +44,19 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     func configureLoginButton() {
         loginButton.isEnabled = emailTextField.text != "" && passwordTextField.text != ""
         loginButton.alpha = emailTextField.text != "" && passwordTextField.text != "" ? 1.0 : 0.7
+    }
+    
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        signUpButton.isEnabled = !loggingIn
+        emailTextField.isEnabled = !loggingIn
+        passwordTextField.isEnabled = !loggingIn
+        loginButton.isEnabled = !loggingIn
+        loginButton.alpha = !loggingIn ? 1.0 : 0.7
     }
     
 }
