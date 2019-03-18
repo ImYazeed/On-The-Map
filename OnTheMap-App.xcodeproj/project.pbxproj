@@ -13,6 +13,10 @@
 		BB69C8B4223F874D00766C5B /* OnTheMap_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8B2223F874D00766C5B /* OnTheMap_App.xcdatamodeld */; };
 		BB69C8B6223F874E00766C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB69C8B5223F874E00766C5B /* Assets.xcassets */; };
 		BB69C8B9223F874E00766C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB69C8B7223F874E00766C5B /* LaunchScreen.storyboard */; };
+		BB69C8C3223FCDCC00766C5B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8C2223FCDCC00766C5B /* NetworkManager.swift */; };
+		BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8C6223FD1D400766C5B /* LoginRequest.swift */; };
+		BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */; };
+		BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CD223FDB5500766C5B /* FailureResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		BB69C8B5223F874E00766C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB69C8B8223F874E00766C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB69C8BA223F874E00766C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB69C8C2223FCDCC00766C5B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BB69C8C6223FD1D400766C5B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BB69C8CD223FDB5500766C5B /* FailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		BB69C8AA223F874D00766C5B /* OnTheMap-App */ = {
 			isa = PBXGroup;
 			children = (
+				BB69C8C1223FCD2500766C5B /* Models */,
 				BB69C8C0223FA06A00766C5B /* Controllers */,
 				BB69C8AB223F874D00766C5B /* AppDelegate.swift */,
 				BB69C8AF223F874D00766C5B /* Main.storyboard */,
@@ -73,6 +82,33 @@
 				BB69C8AD223F874D00766C5B /* loginViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BB69C8C1223FCD2500766C5B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB69C8C9223FD7C200766C5B /* Requests */,
+				BB69C8C8223FD7AA00766C5B /* Responses */,
+				BB69C8C2223FCDCC00766C5B /* NetworkManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB69C8C8223FD7AA00766C5B /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */,
+				BB69C8CD223FDB5500766C5B /* FailureResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		BB69C8C9223FD7C200766C5B /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				BB69C8C6223FD1D400766C5B /* LoginRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB69C8C3223FCDCC00766C5B /* NetworkManager.swift in Sources */,
 				BB69C8B4223F874D00766C5B /* OnTheMap_App.xcdatamodeld in Sources */,
+				BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */,
+				BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */,
 				BB69C8AE223F874D00766C5B /* loginViewController.swift in Sources */,
+				BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */,
 				BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

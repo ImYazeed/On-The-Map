@@ -26,17 +26,26 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
     }
     
     //MARK: ACTIONS
     
     @IBAction func loginTapped(_ sender: Any) {
-       setLoggingIn(true)
+        setLoggingIn(true)
+        NetworkManager.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", sucssess: {
+           
+            self.performSegue(withIdentifier: "mainNav", sender: nil)
+            self.setLoggingIn(false)
+        }) { (error) in
+           self.showLoginFailure(message: error.localizedDescription)
+            self.setLoggingIn(false)
+        }
+        
     }
     
     // MARK: LOGIN BUTTON HANDLING
-
+    
     @IBAction func textFieldDidChange(_ sender: Any) {
         configureLoginButton()
     }
@@ -59,5 +68,10 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         loginButton.alpha = !loggingIn ? 1.0 : 0.7
     }
     
+    func showLoginFailure(message: String) {
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+    }
 }
 
