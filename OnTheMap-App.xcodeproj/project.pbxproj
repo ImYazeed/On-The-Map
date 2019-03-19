@@ -25,6 +25,7 @@
 		BB69C8DE22411A1100766C5B /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8DD22411A1100766C5B /* StudentInformation.swift */; };
 		BB69C8E22241260900766C5B /* StudentsInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E12241260900766C5B /* StudentsInfoResponse.swift */; };
 		BB69C8E52241318C00766C5B /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E42241318C00766C5B /* ParseClient.swift */; };
+		BB69C8E722413E8400766C5B /* StudentsLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BB69C8DD22411A1100766C5B /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		BB69C8E12241260900766C5B /* StudentsInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsInfoResponse.swift; sourceTree = "<group>"; };
 		BB69C8E42241318C00766C5B /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsLocationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				BB69C8AD223F874D00766C5B /* loginViewController.swift */,
 				BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */,
 				BB69C8D4224112CE00766C5B /* MapViewController.swift */,
+				BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				BB69C8D3224107D000766C5B /* AlertManager.swift in Sources */,
 				BB69C8DE22411A1100766C5B /* StudentInformation.swift in Sources */,
 				BB69C8D7224113F600766C5B /* LogoutResponse.swift in Sources */,
+				BB69C8E722413E8400766C5B /* StudentsLocationTableViewController.swift in Sources */,
 				BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
