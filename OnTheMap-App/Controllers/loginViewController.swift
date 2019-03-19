@@ -38,11 +38,12 @@ class loginViewController: UIViewController,UITextFieldDelegate {
             self.performSegue(withIdentifier: "mainNav", sender: nil)
             self.setLoggingIn(false)
         }) { (error) in
-           self.showLoginFailure(message: error.localizedDescription)
+            AlertManager.showLoginFailureFromViewController(viewController: self, message: error.localizedDescription)
             self.setLoggingIn(false)
         }
         
     }
+    
     
     // MARK: LOGIN BUTTON HANDLING
     
@@ -66,12 +67,6 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         passwordTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
         loginButton.alpha = !loggingIn ? 1.0 : 0.7
-    }
-    
-    func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
     }
 }
 

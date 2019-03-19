@@ -20,11 +20,11 @@ class NetworkManager {
         static let ParseBase = "https://parse.udacity.com/parse/classes/StudentLocation"
         
         
-        case createSessionId
+        case session
         
         var stringValue: String {
             switch self {
-            case .createSessionId:
+            case .session:
                 return "\(Endpoints.udacityBase)session"
             }
         }
@@ -37,7 +37,7 @@ class NetworkManager {
     
     class func login(username: String, password: String, sucssess: @escaping () -> Void, failure: @escaping (Error) -> Void ) {
         let user = PersonalInfo(username: username, password: password)
-        var request = URLRequest(url: Endpoints.createSessionId.url)
+        var request = URLRequest(url: Endpoints.session.url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -106,7 +106,49 @@ class NetworkManager {
     
     
     
-    
-    
+    class func logout(sucssess: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        var request = URLRequest(url: Endpoints.session.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let range = 5..<data!.count
+            let newData = data?.subdata(in: range)
+            print(String(data: newData!, encoding: .utf8)!)
+            
+            do {
+                _ = try JSONDecoder().decode(LogoutResponse.self, from: newData!)
+                    DispatchQueue.main.async {
+                        sucssess()
+                }
+            }catch{
+                
+                do {
+                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData!)
+                    DispatchQueue.main.async {
+                        failure(failureResponse)
+                    }
+                    
+                }catch {
+                    DispatchQueue.main.async {
+                        failure(error)
+                    }
+                }
+                
+            }
+            
+        }
+        task.resume()
+    }
     
 }

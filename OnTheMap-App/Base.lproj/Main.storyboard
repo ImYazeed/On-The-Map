@@ -149,7 +149,7 @@
         <!--Map-->
         <scene sceneID="yjt-EB-FF8">
             <objects>
-                <viewController id="QFS-4M-5q1" sceneMemberID="viewController">
+                <viewController id="QFS-4M-5q1" customClass="MapViewController" customModule="OnTheMap_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8GK-HP-DQB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,9 +165,13 @@
         <!--On the Map-->
         <scene sceneID="Voc-mp-0wI">
             <objects>
-                <tabBarController id="GEj-mn-PlS" sceneMemberID="viewController">
+                <tabBarController id="GEj-mn-PlS" customClass="GeneralTabBarController" customModule="OnTheMap_App" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="2EV-zD-IN5">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Hxg-3U-L37"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Hxg-3U-L37">
+                            <connections>
+                                <action selector="logOutTapped:" destination="GEj-mn-PlS" id="UsE-cR-LTS"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="Zkh-Xa-6ul"/>
                             <barButtonItem image="icon_refresh" id="a4W-b3-ELg"/>
@@ -185,7 +189,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xe0-1d-Ovv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="123"/>
+            <point key="canvasLocation" x="691" y="123"/>
         </scene>
     </scenes>
     <resources>

@@ -17,6 +17,10 @@
 		BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8C6223FD1D400766C5B /* LoginRequest.swift */; };
 		BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */; };
 		BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CD223FDB5500766C5B /* FailureResponse.swift */; };
+		BB69C8D02240FD2000766C5B /* GeneralTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */; };
+		BB69C8D3224107D000766C5B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8D2224107D000766C5B /* AlertManager.swift */; };
+		BB69C8D5224112CE00766C5B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8D4224112CE00766C5B /* MapViewController.swift */; };
+		BB69C8D7224113F600766C5B /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8D6224113F600766C5B /* LogoutResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		BB69C8C6223FD1D400766C5B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BB69C8CD223FDB5500766C5B /* FailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponse.swift; sourceTree = "<group>"; };
+		BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTabBarController.swift; sourceTree = "<group>"; };
+		BB69C8D2224107D000766C5B /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		BB69C8D4224112CE00766C5B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		BB69C8D6224113F600766C5B /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 		BB69C8AA223F874D00766C5B /* OnTheMap-App */ = {
 			isa = PBXGroup;
 			children = (
+				BB69C8D1224105FD00766C5B /* Helpers */,
 				BB69C8C1223FCD2500766C5B /* Models */,
 				BB69C8C0223FA06A00766C5B /* Controllers */,
 				BB69C8AB223F874D00766C5B /* AppDelegate.swift */,
@@ -80,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				BB69C8AD223F874D00766C5B /* loginViewController.swift */,
+				BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */,
+				BB69C8D4224112CE00766C5B /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -98,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */,
+				BB69C8D6224113F600766C5B /* LogoutResponse.swift */,
 				BB69C8CD223FDB5500766C5B /* FailureResponse.swift */,
 			);
 			path = Responses;
@@ -109,6 +121,14 @@
 				BB69C8C6223FD1D400766C5B /* LoginRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		BB69C8D1224105FD00766C5B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BB69C8D2224107D000766C5B /* AlertManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,9 +205,13 @@
 				BB69C8C3223FCDCC00766C5B /* NetworkManager.swift in Sources */,
 				BB69C8B4223F874D00766C5B /* OnTheMap_App.xcdatamodeld in Sources */,
 				BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */,
+				BB69C8D5224112CE00766C5B /* MapViewController.swift in Sources */,
 				BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */,
 				BB69C8AE223F874D00766C5B /* loginViewController.swift in Sources */,
 				BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */,
+				BB69C8D02240FD2000766C5B /* GeneralTabBarController.swift in Sources */,
+				BB69C8D3224107D000766C5B /* AlertManager.swift in Sources */,
+				BB69C8D7224113F600766C5B /* LogoutResponse.swift in Sources */,
 				BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
