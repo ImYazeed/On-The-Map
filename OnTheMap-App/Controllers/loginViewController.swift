@@ -33,7 +33,7 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func loginTapped(_ sender: Any) {
         setLoggingIn(true)
-        NetworkManager.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", sucssess: {
+        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", sucssess: {
            
             self.performSegue(withIdentifier: "mainNav", sender: nil)
             self.setLoggingIn(false)

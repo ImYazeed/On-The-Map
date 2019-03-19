@@ -45,7 +45,7 @@
                                             <action selector="textFieldDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="ku3-f5-evq"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3g-cT-3xi">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3g-cT-3xi" customClass="LoginButton" customModule="OnTheMap_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="122" width="382" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -153,14 +153,28 @@
                     <view key="view" contentMode="scaleToFill" id="8GK-HP-DQB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Z5J-zf-Buu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Z5J-zf-Buu" firstAttribute="leading" secondItem="J0k-fy-dKV" secondAttribute="leading" id="85g-qf-MJP"/>
+                            <constraint firstItem="Z5J-zf-Buu" firstAttribute="top" secondItem="J0k-fy-dKV" secondAttribute="top" id="E3v-ee-Lyn"/>
+                            <constraint firstItem="Z5J-zf-Buu" firstAttribute="bottom" secondItem="J0k-fy-dKV" secondAttribute="bottom" id="MwJ-0z-daD"/>
+                            <constraint firstItem="Z5J-zf-Buu" firstAttribute="trailing" secondItem="J0k-fy-dKV" secondAttribute="trailing" id="RMm-ON-Ngo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="J0k-fy-dKV"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" id="peY-PF-CZM"/>
+                    <connections>
+                        <outlet property="mapView" destination="Z5J-zf-Buu" id="9j6-AB-rGj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzs-hF-PGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1629" y="-511"/>
+            <point key="canvasLocation" x="1628.985507246377" y="-511.60714285714283"/>
         </scene>
         <!--On the Map-->
         <scene sceneID="Voc-mp-0wI">

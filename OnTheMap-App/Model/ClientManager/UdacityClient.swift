@@ -9,18 +9,14 @@
 import Foundation
 
 
-class NetworkManager {
-    
-    static let ParseAppID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-    static let ParseApiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
-    
+class UdacityClient {
     
     enum Endpoints {
         static let udacityBase = "https://onthemap-api.udacity.com/v1/"
-        static let ParseBase = "https://parse.udacity.com/parse/classes/StudentLocation"
         
         
         case session
+        
         
         var stringValue: String {
             switch self {
@@ -63,10 +59,6 @@ class NetworkManager {
             }
             
             guard let data = data else {
-                
-                DispatchQueue.main.async {
-                    failure(error!)
-                }
                 return
             }
             
@@ -119,22 +111,31 @@ class NetworkManager {
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
+            
             if error != nil { // Handle error…
+                DispatchQueue.main.async {
+                    failure(error!)
+                }
                 return
             }
-            let range = 5..<data!.count
-            let newData = data?.subdata(in: range)
-            print(String(data: newData!, encoding: .utf8)!)
+            
+            guard let data = data else {
+                return
+            }
+            
+            let range = 5..<data.count
+            let newData = data.subdata(in: range)
+            print(String(data: newData, encoding: .utf8)!)
             
             do {
-                _ = try JSONDecoder().decode(LogoutResponse.self, from: newData!)
+                _ = try JSONDecoder().decode(LogoutResponse.self, from: newData)
                     DispatchQueue.main.async {
                         sucssess()
                 }
             }catch{
                 
                 do {
-                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData!)
+                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData)
                     DispatchQueue.main.async {
                         failure(failureResponse)
                     }
@@ -150,5 +151,6 @@ class NetworkManager {
         }
         task.resume()
     }
+    
     
 }

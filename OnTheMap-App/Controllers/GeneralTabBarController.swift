@@ -13,26 +13,35 @@ class GeneralTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        getStudentInformation()
         
     }
-    
     
     
     @IBAction func logOutTapped(_ sender: Any) {
         
-        NetworkManager.logout(sucssess: {
+        UdacityClient.logout(sucssess: {
         self.dismiss(animated: true, completion: nil)
         }) { (error) in
             
-            guard let selectedVC = self.viewControllers?[self.selectedIndex] else {
-                return
-            }
-            AlertManager.showLoginFailureFromViewController(viewController: selectedVC, message: error.localizedDescription)
+             self.showErrorAlert(messege: error.localizedDescription)
         }
     }
     
+    func getStudentInformation() {
+        
+        ParseClient.getStudentsLocation(success: { (studentsInformationResults) in
+            StudentInformationModel.results = studentsInformationResults
+        }) { (error) in
+            self.showErrorAlert(messege: error.localizedDescription)
+        }
+    }
+    
+    
+    func showErrorAlert(messege: String) {
+
+        AlertManager.showLoginFailureFromViewController(viewController: self, message: messege)
+    }
     /*
     // MARK: - Navigation
 

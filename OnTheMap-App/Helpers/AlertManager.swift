@@ -13,7 +13,7 @@ public class AlertManager: NSObject {
     
     
     public class func showLoginFailureFromViewController(viewController: UIViewController, message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         viewController.present(alertVC, animated: true, completion: nil)
     }
