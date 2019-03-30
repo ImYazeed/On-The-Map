@@ -38,7 +38,7 @@ class loginViewController: UIViewController,UITextFieldDelegate {
             self.performSegue(withIdentifier: "mainNav", sender: nil)
             self.setLoggingIn(false)
         }) { (error) in
-            AlertManager.showLoginFailureFromViewController(viewController: self, message: error.localizedDescription)
+            AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
             self.setLoggingIn(false)
         }
         
@@ -52,8 +52,11 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     }
     
     func configureLoginButton() {
-        loginButton.isEnabled = emailTextField.text != "" && passwordTextField.text != ""
-        loginButton.alpha = emailTextField.text != "" && passwordTextField.text != "" ? 1.0 : 0.7
+        
+        let isTexFieldsFilled = emailTextField.text != "" && passwordTextField.text != ""
+        
+        loginButton.isEnabled = isTexFieldsFilled
+        loginButton.alpha = isTexFieldsFilled ? 1.0 : 0.7
     }
     
     func setLoggingIn(_ loggingIn: Bool) {

@@ -27,6 +27,7 @@
 		BB69C8E52241318C00766C5B /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E42241318C00766C5B /* ParseClient.swift */; };
 		BB69C8E722413E8400766C5B /* StudentsLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */; };
 		BB69C8E92241597200766C5B /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8E82241597200766C5B /* LocationTableViewCell.swift */; };
+		BBEA5AC822497E6800F795CA /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA5AC722497E6800F795CA /* PostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BB69C8E42241318C00766C5B /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsLocationTableViewController.swift; sourceTree = "<group>"; };
 		BB69C8E82241597200766C5B /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		BBEA5AC722497E6800F795CA /* PostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */,
 				BB69C8D4224112CE00766C5B /* MapViewController.swift */,
 				BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */,
+				BBEA5AC722497E6800F795CA /* PostingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				BB69C8E92241597200766C5B /* LocationTableViewCell.swift in Sources */,
 				BB69C8E722413E8400766C5B /* StudentsLocationTableViewController.swift in Sources */,
 				BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */,
+				BBEA5AC822497E6800F795CA /* PostingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

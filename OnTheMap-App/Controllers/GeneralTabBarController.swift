@@ -63,7 +63,7 @@ class GeneralTabBarController: UITabBarController {
     
     func showErrorAlert(messege: String) {
         
-        AlertManager.showLoginFailureFromViewController(viewController: self, message: messege)
+        AlertManager.showFailureFromViewController(viewController: self, message: messege)
         
     }
     /*
