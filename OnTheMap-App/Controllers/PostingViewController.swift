@@ -67,13 +67,12 @@ class PostingViewController: UIViewController {
             }
             
             if let location = location {
-                AlertManager.showFailureFromViewController(viewController: self, message: "Found.")
+                showLocationOnMap(location: location)
             }else {
                 AlertManager.showFailureFromViewController(viewController: self, message: "No Matching Location Found.")
             }
         }
     }
-    
     
    func setFindingLocation(_ findingLocation: Bool) {
     if findingLocation {
@@ -87,5 +86,16 @@ class PostingViewController: UIViewController {
     findLocationButton.isEnabled = !findingLocation
     
     findLocationButton.alpha = !findingLocation ? 1.0 : 0.7
+    }
+    
+    func showLocationOnMap(location: CLLocation) {
+        
+        DispatchQueue.main.async {
+            
+            let newLocationVC = self.storyboard?.instantiateViewController(withIdentifier: "newLocation") as! PostNewLocationViewController
+            
+            newLocationVC.location = location
+            self.navigationController?.pushViewController(newLocationVC, animated: true)
+        }
     }
 }

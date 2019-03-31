@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate  {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -18,13 +18,13 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         super.viewDidLoad()
         mapView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(relodMap), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
-
+        
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     @objc func relodMap() {
         var annotations = [MKPointAnnotation]()
         
@@ -78,7 +78,18 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                
+                if let url = URL(string: toOpen) {
+                    if app.canOpenURL(url) {
+                        app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                    }else{
+                        AlertManager.showFailureFromViewController(viewController: self, message: "Invalid Link")
+                    }
+                }else {
+                    AlertManager.showFailureFromViewController(viewController: self, message: "No Link Found")
+                }
+               
+                
             }
         }
     }

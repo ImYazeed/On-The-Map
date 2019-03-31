@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB3C5D6B225050EE005BEB25 /* PostNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C5D6A225050EE005BEB25 /* PostNewLocationViewController.swift */; };
 		BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8AB223F874D00766C5B /* AppDelegate.swift */; };
 		BB69C8AE223F874D00766C5B /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8AD223F874D00766C5B /* loginViewController.swift */; };
 		BB69C8B1223F874D00766C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB69C8AF223F874D00766C5B /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB3C5D6A225050EE005BEB25 /* PostNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNewLocationViewController.swift; sourceTree = "<group>"; };
 		BB69C8A8223F874D00766C5B /* OnTheMap-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OnTheMap-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB69C8AB223F874D00766C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB69C8AD223F874D00766C5B /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				BB69C8D4224112CE00766C5B /* MapViewController.swift */,
 				BB69C8E622413E8400766C5B /* StudentsLocationTableViewController.swift */,
 				BBEA5AC722497E6800F795CA /* PostingViewController.swift */,
+				BB3C5D6A225050EE005BEB25 /* PostNewLocationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				BB69C8C3223FCDCC00766C5B /* UdacityClient.swift in Sources */,
 				BB69C8E22241260900766C5B /* StudentsInfoResponse.swift in Sources */,
 				BB69C8DB2241190800766C5B /* LoginButton.swift in Sources */,
+				BB3C5D6B225050EE005BEB25 /* PostNewLocationViewController.swift in Sources */,
 				BB69C8B4223F874D00766C5B /* OnTheMap_App.xcdatamodeld in Sources */,
 				BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */,
 				BB69C8D5224112CE00766C5B /* MapViewController.swift in Sources */,

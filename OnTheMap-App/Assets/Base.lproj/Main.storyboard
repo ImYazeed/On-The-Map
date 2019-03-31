@@ -201,6 +201,53 @@
             </objects>
             <point key="canvasLocation" x="2524.6376811594205" y="-542.41071428571422"/>
         </scene>
+        <!--Post New Location View Controller-->
+        <scene sceneID="BVB-0Q-HB0">
+            <objects>
+                <viewController storyboardIdentifier="newLocation" id="hKu-zW-pxh" customClass="PostNewLocationViewController" customModule="OnTheMap_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xwa-XM-eJm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-ni-4qb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-vN-v1c" customClass="LoginButton" customModule="OnTheMap_App" customModuleProvider="target">
+                                <rect key="frame" x="20" y="782" width="374" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pxM-dL-oG6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="findLocationTapped:" destination="eR6-BU-c95" eventType="touchUpInside" id="1up-HC-P4h"/>
+                                    <action selector="submitLocationTapped:" destination="hKu-zW-pxh" eventType="touchUpInside" id="d4m-ZD-RdR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zYp-ni-4qb" firstAttribute="top" secondItem="xr2-2M-swi" secondAttribute="top" id="0Oe-fi-foB"/>
+                            <constraint firstItem="zYp-ni-4qb" firstAttribute="bottom" secondItem="Xwa-XM-eJm" secondAttribute="bottom" id="HmR-gD-Cd0"/>
+                            <constraint firstItem="xr2-2M-swi" firstAttribute="trailing" secondItem="S7M-vN-v1c" secondAttribute="trailing" constant="20" id="OGB-0U-IRb"/>
+                            <constraint firstItem="xr2-2M-swi" firstAttribute="bottom" secondItem="S7M-vN-v1c" secondAttribute="bottom" constant="40" id="Qgj-6h-loR"/>
+                            <constraint firstItem="zYp-ni-4qb" firstAttribute="trailing" secondItem="xr2-2M-swi" secondAttribute="trailing" id="eJZ-9J-pxS"/>
+                            <constraint firstItem="zYp-ni-4qb" firstAttribute="leading" secondItem="xr2-2M-swi" secondAttribute="leading" id="siO-oB-Tgs"/>
+                            <constraint firstItem="S7M-vN-v1c" firstAttribute="leading" secondItem="xr2-2M-swi" secondAttribute="leading" constant="20" id="tHC-ve-PyT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xr2-2M-swi"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="zYp-ni-4qb" id="u1g-U6-LI5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKd-M7-OfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3430" y="-542"/>
+        </scene>
         <!--List-->
         <scene sceneID="jZ5-em-sOd">
             <objects>
