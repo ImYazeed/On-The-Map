@@ -30,7 +30,7 @@ class PostingViewController: UIViewController {
         configureFindLocationButton()
     }
     @IBAction func cancelTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func findLocationTapped(_ sender: Any) {
@@ -95,6 +95,9 @@ class PostingViewController: UIViewController {
             let newLocationVC = self.storyboard?.instantiateViewController(withIdentifier: "newLocation") as! PostNewLocationViewController
             
             newLocationVC.location = location
+            newLocationVC.mediaUrl = self.linkTextField.text!
+            newLocationVC.mapString = self.locationTextField.text!
+            self.navigationController?.modalPresentationStyle = .fullScreen
             self.navigationController?.pushViewController(newLocationVC, animated: true)
         }
     }

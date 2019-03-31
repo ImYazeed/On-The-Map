@@ -11,17 +11,21 @@ import Foundation
 
 class UdacityClient {
     
+    static var userKey = ""
+    
     enum Endpoints {
         static let udacityBase = "https://onthemap-api.udacity.com/v1/"
         
         
         case session
-        
+        case getUserData
         
         var stringValue: String {
             switch self {
             case .session:
                 return "\(Endpoints.udacityBase)session"
+            case .getUserData:
+                return "\(Endpoints.udacityBase)users/\(userKey)"
             }
         }
         
@@ -31,7 +35,7 @@ class UdacityClient {
     }
     
     
-    class func login(username: String, password: String, sucssess: @escaping () -> Void, failure: @escaping (Error) -> Void ) {
+    class func login(username: String, password: String, sucssess: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         let user = PersonalInfo(username: username, password: password)
         var request = URLRequest(url: Endpoints.session.url)
         request.httpMethod = "POST"
@@ -50,11 +54,11 @@ class UdacityClient {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
-            if error != nil { // Handle error…
+            
+            if let error = error {
                 DispatchQueue.main.async {
-                    failure(error!)
+                    failure(error)
                 }
-
                 return
             }
             
@@ -71,19 +75,20 @@ class UdacityClient {
                 
                 if loginResponse.account.registered {
                     DispatchQueue.main.async {
-                      sucssess()
+                        userKey = loginResponse.account.key
+                        sucssess()
                     }
-    
+                    
                 }
                 
             }catch {
                 
                 do {
-                   let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData)
+                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData)
                     DispatchQueue.main.async {
                         failure(failureResponse)
                     }
-                   
+                    
                 }catch {
                     DispatchQueue.main.async {
                         failure(error)
@@ -112,9 +117,9 @@ class UdacityClient {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             
-            if error != nil { // Handle error…
+            if let error = error {
                 DispatchQueue.main.async {
-                    failure(error!)
+                    failure(error)
                 }
                 return
             }
@@ -129,8 +134,8 @@ class UdacityClient {
             
             do {
                 _ = try JSONDecoder().decode(LogoutResponse.self, from: newData)
-                    DispatchQueue.main.async {
-                        sucssess()
+                DispatchQueue.main.async {
+                    sucssess()
                 }
             }catch{
                 
@@ -151,6 +156,45 @@ class UdacityClient {
         }
         task.resume()
     }
+    
+    
+    
+    class func getUserData(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        
+        let request = URLRequest(url: Endpoints.getUserData.url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    failure(error)
+                }
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            let range = 5..<data.count
+            let newData = data.subdata(in: range)
+            
+            do {
+               let decoder = JSONDecoder()
+               let user = try decoder.decode(User.self, from: newData)
+               
+                StudentInformationModel.currentUser = user
+                DispatchQueue.main.async {
+                    success()
+                }
+            }catch {
+                DispatchQueue.main.async {
+                    failure(error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
     
     
 }

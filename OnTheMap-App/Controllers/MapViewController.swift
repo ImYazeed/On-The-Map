@@ -17,11 +17,15 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(relodMap), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(relodMap), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+    }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     

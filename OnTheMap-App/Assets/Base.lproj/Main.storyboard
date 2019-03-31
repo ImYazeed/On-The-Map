@@ -379,7 +379,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="Zkh-Xa-6ul">
                                 <connections>
-                                    <segue destination="f20-fN-P1G" kind="show" id="f2e-aJ-j3f"/>
+                                    <segue destination="f20-fN-P1G" kind="presentation" id="f2e-aJ-j3f"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" id="a4W-b3-ELg">

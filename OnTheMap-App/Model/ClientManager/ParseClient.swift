@@ -20,13 +20,15 @@ class ParseClient {
         
         
         case studentLocation(limit: Int)
-        
+        case postStudentLocation
         
         var stringValue: String {
             switch self {
-            case .studentLocation:
-                return "\(Endpoints.ParseBase)"
+            case let .studentLocation(limit):
+                return "\(Endpoints.ParseBase)?limit=\(limit)&order=-updatedAt"
          
+            case .postStudentLocation:
+                return "\(Endpoints.ParseBase)"
             }
         }
         
@@ -43,9 +45,10 @@ class ParseClient {
         request.addValue(ParseApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil {
+            
+            if let error = error {
                 DispatchQueue.main.async {
-                    failure(error!)
+                    failure(error)
                 }
                 return
             }
@@ -64,9 +67,47 @@ class ParseClient {
                 }
                 
             }catch{
-                failure(error)
+                DispatchQueue.main.async {
+                    failure(error)
+                }
+                
             }
             
+        }
+        task.resume()
+    }
+    
+    
+    class func postStudentLocation(student:StudentInfoToSend, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        
+        var request = URLRequest(url: Endpoints.postStudentLocation.url)
+        request.httpMethod = "POST"
+        request.addValue(ParseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(ParseApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+             let encoder = JSONEncoder()
+             let body = try encoder.encode(student)
+             request.httpBody = body
+        }catch{
+            failure(error)
+        }
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    failure(error)
+                }
+                return
+            }
+            
+            print(String(data: data!, encoding: .utf8)!)
+            
+            DispatchQueue.main.async {
+                success()
+            }
         }
         task.resume()
     }

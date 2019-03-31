@@ -13,14 +13,27 @@ struct StudentInformation: Codable {
     let uniqueKey: String?
     let firstName: String?
     let lastName: String?
-    var mapString: String?
-    var mediaURL: String?
+    let mapString: String?
+    let mediaURL: String?
     let latitude: Double?
     let longitude: Double?
     let createdAt: String?
     let updatedAt: String?
 }
 
+struct StudentInfoToSend: Encodable {
+    let uniqueKey: String
+    let firstName: String
+    let lastName: String
+    var mapString: String
+    var mediaURL: String
+    let latitude: Double
+    let longitude: Double
+}
+
 class StudentInformationModel {
     static var results = [StudentInformation]()
+    
+    // initial User data, it will change after user logged in
+    static var currentUser = User(firstName:"", lastName:"", key:"")
 }

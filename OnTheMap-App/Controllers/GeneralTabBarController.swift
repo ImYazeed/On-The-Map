@@ -14,10 +14,11 @@ class GeneralTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActivityIndicator()
-        getStudentInformation()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+         getStudentInformation()
+    }
     @IBAction func logOutTapped(_ sender: Any) {
         
         UdacityClient.logout(sucssess: {
@@ -28,6 +29,10 @@ class GeneralTabBarController: UITabBarController {
         }
     }
     
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        print("")
+//    }
     @IBAction func refershTapped(_ sender: Any) {
         getStudentInformation()
     }

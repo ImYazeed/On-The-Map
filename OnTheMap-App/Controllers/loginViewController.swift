@@ -33,14 +33,10 @@ class loginViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func loginTapped(_ sender: Any) {
         setLoggingIn(true)
-        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", sucssess: {
-           
-            self.performSegue(withIdentifier: "mainNav", sender: nil)
-            self.setLoggingIn(false)
-        }) { (error) in
-            AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
-            self.setLoggingIn(false)
-        }
+        
+        UdacityClient.login(username: emailTextField.text!, password: passwordTextField.text!,
+                            sucssess: handleSuccessLogin,
+                            failure: handleFailureLogin(error:))
         
     }
     
@@ -71,5 +67,25 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         loginButton.isEnabled = !loggingIn
         loginButton.alpha = !loggingIn ? 1.0 : 0.7
     }
+    
+    func handleSuccessLogin() {
+        
+        UdacityClient.getUserData(
+            success: {
+                self.performSegue(withIdentifier: "mainNav", sender: nil)
+                
+        },
+            failure: {(error) in
+            AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+        })
+        setLoggingIn(false)
+        
+    }
+    
+    func handleFailureLogin(error: Error){
+        AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+        self.setLoggingIn(false)
+    }
+    
 }
 

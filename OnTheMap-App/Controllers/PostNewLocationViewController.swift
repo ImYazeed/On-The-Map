@@ -12,6 +12,8 @@ import MapKit
 class PostNewLocationViewController: UIViewController {
     
     var location: CLLocation!
+    var mediaUrl: String!
+    var mapString: String!
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,9 +26,20 @@ class PostNewLocationViewController: UIViewController {
     
     
     @IBAction func submitLocationTapped(_ sender: Any) {
-        
-    }
     
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+       let studentInfo = StudentInfoToSend(uniqueKey: StudentInformationModel.currentUser.key, firstName: StudentInformationModel.currentUser.firstName, lastName: StudentInformationModel.currentUser.lastName, mapString: mapString, mediaURL: mediaUrl, latitude: latitude, longitude: longitude)
+        
+        ParseClient.postStudentLocation(student: studentInfo,
+                                        success: {
+            self.dismiss(animated: true, completion: nil)
+        },
+                                        failure: {(error) in
+                AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+        })
+    }
     
     func showAnnotationsOnMap() {
         
@@ -43,7 +56,6 @@ class PostNewLocationViewController: UIViewController {
         
         self.mapView.region = coordinateRegion
         self.mapView.addAnnotation(annotation)
-        
         
     }
 }
