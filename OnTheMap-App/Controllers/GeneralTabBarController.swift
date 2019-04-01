@@ -30,10 +30,6 @@ class GeneralTabBarController: UITabBarController {
         }
     }
     
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        print("")
-//    }
     @IBAction func refershTapped(_ sender: Any) {
         getStudentInformation()
     }
