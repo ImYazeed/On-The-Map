@@ -31,13 +31,13 @@ class StudentsLocationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StudentInformationModel.results.count
+        return StudentInformationModel.shared.results.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LocationTableViewCell
-        cell.configureCell(studentInfo: StudentInformationModel.results[indexPath.row])
+        cell.configureCell(studentInfo: StudentInformationModel.shared.results[indexPath.row])
         return cell
     }
     
@@ -49,7 +49,7 @@ class StudentsLocationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-         let mediaURL = StudentInformationModel.results[indexPath.row].mediaURL
+         let mediaURL = StudentInformationModel.shared.results[indexPath.row].mediaURL
         
             if let url = URL(string: mediaURL) {
                 let app = UIApplication.shared
@@ -80,3 +80,4 @@ class StudentsLocationTableViewController: UITableViewController {
     }
     
 }
+

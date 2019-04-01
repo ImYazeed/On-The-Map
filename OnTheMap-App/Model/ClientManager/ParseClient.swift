@@ -60,7 +60,7 @@ class ParseClient {
             do {
                 
                 let studentsInfoResonse = try JSONDecoder().decode(StudentsInfoResponse.self, from: data)
-                StudentInformationModel.results = studentsInfoResonse.results
+                StudentInformationModel.shared.results = studentsInfoResonse.results
                 DispatchQueue.main.async {
                     success()
                 }

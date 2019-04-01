@@ -22,7 +22,12 @@ struct StudentInformation: Codable {
 }
 
 class StudentInformationModel {
-    static var results = [StudentInformation]()
+    
+    // MARK: - Shared Instance
+    
+    static let shared = StudentInformationModel()
+
+    var results = [StudentInformation]()
     
     // initial User data, it will change after user logged in
     static var currentUser = User(firstName:"", lastName:"", key:"")

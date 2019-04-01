@@ -33,7 +33,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     @objc func relodMap() {
         var annotations = [MKPointAnnotation]()
         
-        for studentLocation in StudentInformationModel.results {
+        for studentLocation in StudentInformationModel.shared.results {
             let lat = CLLocationDegrees(studentLocation.latitude)
             let long = CLLocationDegrees(studentLocation.longitude)
             
