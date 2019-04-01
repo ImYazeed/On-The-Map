@@ -12,28 +12,25 @@ class StudentsLocationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
-    
-    // MARK: - Table view data source
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(relodData), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+       subscribeToStudentInformationNotifications()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+        unsubscribeToStudentInformationNotifications()
     }
+    
+    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return StudentInformationModel.results.count
     }
     
@@ -52,21 +49,34 @@ class StudentsLocationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let mediaURL = StudentInformationModel.results[indexPath.row].mediaURL {
+         let mediaURL = StudentInformationModel.results[indexPath.row].mediaURL
+        
             if let url = URL(string: mediaURL) {
                 let app = UIApplication.shared
                 if app.canOpenURL(url){
                     app.open(url, options: [:], completionHandler: nil)
                 }else{
-                     AlertManager.showFailureFromViewController(viewController: self, message: "Invalid Link")
+                     AlertManager.shared.showFailureFromViewController(viewController: self, message: "Invalid Link")
                 }
             }else{
-               AlertManager.showFailureFromViewController(viewController: self, message: "No Link Found")
+               AlertManager.shared.showFailureFromViewController(viewController: self, message: "No Link Found")
             }
-        }
+        
     }
+    
+    // MARK: Notifications
+    
+    func subscribeToStudentInformationNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(relodData), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+    }
+    
+    func unsubscribeToStudentInformationNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     
     @objc func relodData() {
         tableView.reloadData()
     }
+    
 }

@@ -21,15 +21,31 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        loginButton.layer.cornerRadius = 4.0
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    // MARK: Login handling
+    
+    func handleSuccessLogin() {
+        
+        UdacityClient.getUserData(
+            success: {
+                self.performSegue(withIdentifier: "mainNav", sender: nil)
+                
+        },
+            failure: {(error) in
+                AlertManager.shared.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+        })
+        setLoggingIn(false)
         
     }
     
-    //MARK: ACTIONS
+    func handleFailureLogin(error: Error){
+        AlertManager.shared.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+        self.setLoggingIn(false)
+    }
+    
+    
+    // MARK: ACTIONS
     
     @IBAction func loginTapped(_ sender: Any) {
         setLoggingIn(true)
@@ -40,17 +56,21 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    
-    // MARK: LOGIN BUTTON HANDLING
-    
     @IBAction func textFieldDidChange(_ sender: Any) {
         configureLoginButton()
     }
     
+    @IBAction func signUpTapped(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)
+    }
+    
+    
+    
+    // MARK: UI Confegration
+    
     func configureLoginButton() {
         
         let isTexFieldsFilled = emailTextField.text != "" && passwordTextField.text != ""
-        
         loginButton.isEnabled = isTexFieldsFilled
         loginButton.alpha = isTexFieldsFilled ? 1.0 : 0.7
     }
@@ -66,25 +86,6 @@ class loginViewController: UIViewController,UITextFieldDelegate {
         passwordTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
         loginButton.alpha = !loggingIn ? 1.0 : 0.7
-    }
-    
-    func handleSuccessLogin() {
-        
-        UdacityClient.getUserData(
-            success: {
-                self.performSegue(withIdentifier: "mainNav", sender: nil)
-                
-        },
-            failure: {(error) in
-            AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
-        })
-        setLoggingIn(false)
-        
-    }
-    
-    func handleFailureLogin(error: Error){
-        AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
-        self.setLoggingIn(false)
     }
     
 }

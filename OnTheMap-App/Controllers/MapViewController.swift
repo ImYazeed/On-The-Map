@@ -17,44 +17,43 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(relodMap), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+        subscribeStudentInformationNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+       unsubscribeStudentInformationNotifications()
     }
+   
+    // MARK: Map Configration
     
     @objc func relodMap() {
         var annotations = [MKPointAnnotation]()
         
         for studentLocation in StudentInformationModel.results {
-            let lat = CLLocationDegrees(studentLocation.latitude ?? 1.0)
-            let long = CLLocationDegrees(studentLocation.longitude ?? 1.0)
+            let lat = CLLocationDegrees(studentLocation.latitude)
+            let long = CLLocationDegrees(studentLocation.longitude)
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = studentLocation.firstName ?? ""
-            let last = studentLocation.lastName ?? ""
-            let mediaURL = studentLocation.mediaURL ?? ""
+            let first = studentLocation.firstName
+            let last = studentLocation.lastName
+            let mediaURL = studentLocation.mediaURL
             
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = "\(first) \(last)"
             annotation.subtitle = mediaURL
-            
-            // Finally we place the annotation in an array of annotations.
+
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
     }
     
-    
+    // MARK: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -75,9 +74,6 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         return pinView
     }
     
-    
-    // This delegate method is implemented to respond to taps. It opens the system browser
-    // to the URL specified in the annotationViews subtitle property.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
@@ -87,10 +83,10 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
                     if app.canOpenURL(url) {
                         app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
                     }else{
-                        AlertManager.showFailureFromViewController(viewController: self, message: "Invalid Link")
+                       AlertManager.shared.showFailureFromViewController(viewController: self, message: "Invalid Link")
                     }
                 }else {
-                    AlertManager.showFailureFromViewController(viewController: self, message: "No Link Found")
+                    AlertManager.shared.showFailureFromViewController(viewController: self, message: "No Link Found")
                 }
                
                 
@@ -99,5 +95,13 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     
+    // MARK: Notifications
     
+    func subscribeStudentInformationNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(relodMap), name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+    }
+    
+    func unsubscribeStudentInformationNotifications() {
+         NotificationCenter.default.removeObserver(self)
+    }
 }

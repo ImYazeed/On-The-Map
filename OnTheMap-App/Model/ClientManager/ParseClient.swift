@@ -38,7 +38,7 @@ class ParseClient {
     }
     
     
-    class func getStudentsLocation(success: @escaping ([StudentInformation])-> Void, failure: @escaping (Error) -> Void) {
+    class func getStudentsLocation(success: @escaping ()-> Void, failure: @escaping (Error) -> Void) {
         
         var request = URLRequest(url: Endpoints.studentLocation(limit: 100).url)
         request.addValue(ParseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
@@ -56,14 +56,13 @@ class ParseClient {
             guard let data = data else {
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
             
             do {
                 
                 let studentsInfoResonse = try JSONDecoder().decode(StudentsInfoResponse.self, from: data)
-                
+                StudentInformationModel.results = studentsInfoResonse.results
                 DispatchQueue.main.async {
-                    success(studentsInfoResonse.results)
+                    success()
                 }
                 
             }catch{
@@ -103,10 +102,25 @@ class ParseClient {
                 return
             }
             
-            print(String(data: data!, encoding: .utf8)!)
-            
-            DispatchQueue.main.async {
-                success()
+            do {
+                // just to make sure of success post location
+                let _ = try JSONDecoder().decode(PostLocationResponse.self, from: data!)
+                DispatchQueue.main.async {
+                    success()
+                }
+            }catch {
+                
+                do {
+                    let failureResponse = try JSONDecoder().decode(FailurePostLocationResponse.self, from: data!)
+                    DispatchQueue.main.async {
+                        failure(failureResponse)
+                    }
+                    
+                }catch {
+                    DispatchQueue.main.async {
+                        failure(error)
+                    }
+                }
             }
         }
         task.resume()

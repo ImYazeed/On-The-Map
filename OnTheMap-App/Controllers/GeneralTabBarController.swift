@@ -18,34 +18,28 @@ class GeneralTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         getStudentInformation()
+        getStudentInformation()
     }
+    
+    // MARK: ACTIONS
+    
     @IBAction func logOutTapped(_ sender: Any) {
         
-        UdacityClient.logout(sucssess: {
-            self.dismiss(animated: true, completion: nil)
-        }) { (error) in
-            
-            self.showErrorAlert(messege: error.localizedDescription)
-        }
+        UdacityClient.logout(
+            sucssess: {
+                self.dismiss(animated: true, completion: nil)
+        },
+            failure: { (error) in
+                
+                self.showErrorAlert(messege: error.localizedDescription)
+        })
     }
     
     @IBAction func refershTapped(_ sender: Any) {
         getStudentInformation()
     }
-    func getStudentInformation() {
-        
-        performRefereshIndicator()
-        ParseClient.getStudentsLocation(success: { (studentsInformationResults) in
-            StudentInformationModel.results = studentsInformationResults
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
-           self.performRefereshIndicator()
-        }) { (error) in
-            self.performRefereshIndicator()
-            self.showErrorAlert(messege: error.localizedDescription)
-            
-        }
-    }
+    
+    // MARK: UI Configration
     
     func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(style: .gray)
@@ -64,18 +58,25 @@ class GeneralTabBarController: UITabBarController {
     }
     
     func showErrorAlert(messege: String) {
-        
-        AlertManager.showFailureFromViewController(viewController: self, message: messege)
-        
+        AlertManager.shared.showFailureFromViewController(viewController: self, message: messege)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    
+    // MARK: GET DATA
+    
+    func getStudentInformation() {
+        
+        performRefereshIndicator()
+        ParseClient.getStudentsLocation(
+            success: {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "studuntInformationUpdated"), object: nil)
+                self.performRefereshIndicator()
+        },
+            failure: { (error) in
+                self.performRefereshIndicator()
+                self.showErrorAlert(messege: error.localizedDescription)
+                
+        })
+    }
     
 }

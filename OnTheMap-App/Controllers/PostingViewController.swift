@@ -21,10 +21,9 @@ class PostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
+    // MARK: ACTIONS
     
     @IBAction func textFieldDidChange(_ sender: Any) {
         configureFindLocationButton()
@@ -44,21 +43,14 @@ class PostingViewController: UIViewController {
         }
     }
     
-    func configureFindLocationButton() {
-        
-        let isTexFieldsFilled = locationTextField.text != "" && linkTextField.text != ""
-        
-        findLocationButton.isEnabled = isTexFieldsFilled
-        findLocationButton.alpha = isTexFieldsFilled ? 1.0 : 0.7
-    }
-    
+    // MARK: Map Configarations
     
     func handleFindingLocationResponse(placeMarks: [CLPlacemark]?, error: Error?) {
         
         setFindingLocation(false)
         
         if (error != nil) {
-            AlertManager.showFailureFromViewController(viewController: self, message: "Unable to Find Location for Address.")
+            AlertManager.shared.showFailureFromViewController(viewController: self, message: "Unable to Find Location for Address.")
         }else {
             var location: CLLocation?
             
@@ -69,23 +61,33 @@ class PostingViewController: UIViewController {
             if let location = location {
                 showLocationOnMap(location: location)
             }else {
-                AlertManager.showFailureFromViewController(viewController: self, message: "No Matching Location Found.")
+                AlertManager.shared.showFailureFromViewController(viewController: self, message: "No Matching Location Found.")
             }
         }
     }
     
-   func setFindingLocation(_ findingLocation: Bool) {
-    if findingLocation {
-        activityIndicator.startAnimating()
-    } else {
-        activityIndicator.stopAnimating()
-    }
-    findLocationButton.isEnabled = !findingLocation
-    locationTextField.isEnabled = !findingLocation
-    linkTextField.isEnabled = !findingLocation
-    findLocationButton.isEnabled = !findingLocation
+    // MARK: UI Configrations
     
-    findLocationButton.alpha = !findingLocation ? 1.0 : 0.7
+    func configureFindLocationButton() {
+        
+        let isTexFieldsFilled = locationTextField.text != "" && linkTextField.text != ""
+        
+        findLocationButton.isEnabled = isTexFieldsFilled
+        findLocationButton.alpha = isTexFieldsFilled ? 1.0 : 0.7
+    }
+    
+    func setFindingLocation(_ findingLocation: Bool) {
+        if findingLocation {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        findLocationButton.isEnabled = !findingLocation
+        locationTextField.isEnabled = !findingLocation
+        linkTextField.isEnabled = !findingLocation
+        findLocationButton.isEnabled = !findingLocation
+        
+        findLocationButton.alpha = !findingLocation ? 1.0 : 0.7
     }
     
     func showLocationOnMap(location: CLLocation) {

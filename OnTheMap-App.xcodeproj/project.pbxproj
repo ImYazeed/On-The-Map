@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BB3C5D6B225050EE005BEB25 /* PostNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C5D6A225050EE005BEB25 /* PostNewLocationViewController.swift */; };
 		BB3C5D6D2250D09F005BEB25 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C5D6C2250D09F005BEB25 /* User.swift */; };
+		BB3C5D6F2251F66D005BEB25 /* postLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C5D6E2251F66D005BEB25 /* postLocationResponse.swift */; };
+		BB3C5D7122520550005BEB25 /* postLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C5D7022520550005BEB25 /* postLocationRequest.swift */; };
 		BB69C8AC223F874D00766C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8AB223F874D00766C5B /* AppDelegate.swift */; };
 		BB69C8AE223F874D00766C5B /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8AD223F874D00766C5B /* loginViewController.swift */; };
 		BB69C8B1223F874D00766C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB69C8AF223F874D00766C5B /* Main.storyboard */; };
@@ -18,7 +20,7 @@
 		BB69C8C3223FCDCC00766C5B /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8C2223FCDCC00766C5B /* UdacityClient.swift */; };
 		BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8C6223FD1D400766C5B /* LoginRequest.swift */; };
 		BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */; };
-		BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CD223FDB5500766C5B /* FailureResponse.swift */; };
+		BB69C8CE223FDB5500766C5B /* FailureResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CD223FDB5500766C5B /* FailureResponses.swift */; };
 		BB69C8D02240FD2000766C5B /* GeneralTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */; };
 		BB69C8D3224107D000766C5B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8D2224107D000766C5B /* AlertManager.swift */; };
 		BB69C8D5224112CE00766C5B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69C8D4224112CE00766C5B /* MapViewController.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		BB3C5D6A225050EE005BEB25 /* PostNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNewLocationViewController.swift; sourceTree = "<group>"; };
 		BB3C5D6C2250D09F005BEB25 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BB3C5D6E2251F66D005BEB25 /* postLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postLocationResponse.swift; sourceTree = "<group>"; };
+		BB3C5D7022520550005BEB25 /* postLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postLocationRequest.swift; sourceTree = "<group>"; };
 		BB69C8A8223F874D00766C5B /* OnTheMap-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OnTheMap-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB69C8AB223F874D00766C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB69C8AD223F874D00766C5B /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +50,7 @@
 		BB69C8C2223FCDCC00766C5B /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		BB69C8C6223FD1D400766C5B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
-		BB69C8CD223FDB5500766C5B /* FailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponse.swift; sourceTree = "<group>"; };
+		BB69C8CD223FDB5500766C5B /* FailureResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponses.swift; sourceTree = "<group>"; };
 		BB69C8CF2240FD2000766C5B /* GeneralTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTabBarController.swift; sourceTree = "<group>"; };
 		BB69C8D2224107D000766C5B /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		BB69C8D4224112CE00766C5B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -131,8 +135,9 @@
 			children = (
 				BB69C8CB223FD7ED00766C5B /* LoginResponse.swift */,
 				BB69C8D6224113F600766C5B /* LogoutResponse.swift */,
-				BB69C8CD223FDB5500766C5B /* FailureResponse.swift */,
+				BB69C8CD223FDB5500766C5B /* FailureResponses.swift */,
 				BB69C8E12241260900766C5B /* StudentsInfoResponse.swift */,
+				BB3C5D6E2251F66D005BEB25 /* postLocationResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				BB69C8C6223FD1D400766C5B /* LoginRequest.swift */,
+				BB3C5D7022520550005BEB25 /* postLocationRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -265,15 +271,17 @@
 				BB69C8E22241260900766C5B /* StudentsInfoResponse.swift in Sources */,
 				BB69C8DB2241190800766C5B /* LoginButton.swift in Sources */,
 				BB3C5D6B225050EE005BEB25 /* PostNewLocationViewController.swift in Sources */,
+				BB3C5D7122520550005BEB25 /* postLocationRequest.swift in Sources */,
 				BB69C8B4223F874D00766C5B /* OnTheMap_App.xcdatamodeld in Sources */,
 				BB3C5D6D2250D09F005BEB25 /* User.swift in Sources */,
 				BB69C8CC223FD7ED00766C5B /* LoginResponse.swift in Sources */,
 				BB69C8D5224112CE00766C5B /* MapViewController.swift in Sources */,
-				BB69C8CE223FDB5500766C5B /* FailureResponse.swift in Sources */,
+				BB69C8CE223FDB5500766C5B /* FailureResponses.swift in Sources */,
 				BB69C8AE223F874D00766C5B /* loginViewController.swift in Sources */,
 				BB69C8C7223FD1D400766C5B /* LoginRequest.swift in Sources */,
 				BB69C8D02240FD2000766C5B /* GeneralTabBarController.swift in Sources */,
 				BB69C8E52241318C00766C5B /* ParseClient.swift in Sources */,
+				BB3C5D6F2251F66D005BEB25 /* postLocationResponse.swift in Sources */,
 				BB69C8D3224107D000766C5B /* AlertManager.swift in Sources */,
 				BB69C8DE22411A1100766C5B /* StudentInformation.swift in Sources */,
 				BB69C8D7224113F600766C5B /* LogoutResponse.swift in Sources */,

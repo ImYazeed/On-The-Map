@@ -17,13 +17,12 @@ class PostNewLocationViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         showAnnotationsOnMap()
     }
     
+    // MARK: ACTIONS
     
     @IBAction func submitLocationTapped(_ sender: Any) {
     
@@ -37,9 +36,11 @@ class PostNewLocationViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         },
                                         failure: {(error) in
-                AlertManager.showFailureFromViewController(viewController: self, message: error.localizedDescription)
+                AlertManager.shared.showFailureFromViewController(viewController: self, message: error.localizedDescription)
         })
     }
+    
+    // UI Configrations
     
     func showAnnotationsOnMap() {
         

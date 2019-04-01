@@ -68,23 +68,28 @@ class UdacityClient {
             
             let range = 5..<data.count
             let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
             
             do {
                 let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: newData)
                 
                 if loginResponse.account.registered {
+                    
                     DispatchQueue.main.async {
                         userKey = loginResponse.account.key
                         sucssess()
                     }
                     
+                }else {
+                    let RegisterationError = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "You are not registered"])
+                    DispatchQueue.main.async {
+                        failure(RegisterationError)
+                    }
                 }
                 
             }catch {
                 
                 do {
-                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData)
+                    let failureResponse = try JSONDecoder().decode(FailureLoginResponse.self, from: newData)
                     DispatchQueue.main.async {
                         failure(failureResponse)
                     }
@@ -130,9 +135,9 @@ class UdacityClient {
             
             let range = 5..<data.count
             let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
             
             do {
+                // just to make sure of success logout
                 _ = try JSONDecoder().decode(LogoutResponse.self, from: newData)
                 DispatchQueue.main.async {
                     sucssess()
@@ -140,7 +145,7 @@ class UdacityClient {
             }catch{
                 
                 do {
-                    let failureResponse = try JSONDecoder().decode(FailureResponse.self, from: newData)
+                    let failureResponse = try JSONDecoder().decode(FailureLoginResponse.self, from: newData)
                     DispatchQueue.main.async {
                         failure(failureResponse)
                     }

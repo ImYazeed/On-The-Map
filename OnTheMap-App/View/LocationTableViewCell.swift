@@ -26,8 +26,8 @@ class LocationTableViewCell: UITableViewCell {
     }
     
     func configureCell(studentInfo: StudentInformation){
-        userName.text = "\(studentInfo.firstName ?? "") \(studentInfo.lastName ?? "")"
-        userLink.text = studentInfo.mediaURL ?? ""
+        userName.text = "\(studentInfo.firstName) \(studentInfo.lastName)"
+        userLink.text = studentInfo.mediaURL
     }
 
 }
