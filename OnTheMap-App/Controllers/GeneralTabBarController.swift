@@ -17,6 +17,7 @@ class GeneralTabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
          getStudentInformation()
     }
     @IBAction func logOutTapped(_ sender: Any) {
