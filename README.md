@@ -1,6 +1,6 @@
 # iOS Developer Nano Degree Project
 
-## OnTheMap
+## On The Map
 
 OnTheMap is an application that shows the user Udacity students' name, professional website, and location on a map view and a list view, and allows the user to add or update their own locations.
 
